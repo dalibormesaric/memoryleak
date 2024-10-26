@@ -62,7 +62,7 @@ The chart displays two values for the memory usage:
 
 #### Transient objects
 
-The following API creates a 10KB `String` instance and returns it to the client. On each request a new object is allocated in memory and written on the response. 
+The following API creates a 20KB `String` instance and returns it to the client. On each request a new object is allocated in memory and written on the response. 
 
 > Note: Strings are stored as UTF-16 characters in .NET so each char takes two bytes in memory.
 
@@ -122,7 +122,7 @@ On a typical web server environment the CPU resource is more critical than memor
 
 Even though the garbage collector does a good job at preventing memory to grow, if objects are simply held live by the user code GC cannot release them. If the amount of memory used by such objects keeps increasing, it’s called a managed memory leak.
 
-The following API creates a 10KB `String` instance and returns it to the client. The difference with the first example is that this instance is referenced by a static member, which means it will never available for collection.
+The following API creates a 20KB `String` instance and returns it to the client. The difference with the first example is that this instance is referenced by a static member, which means it will never available for collection.
 
 ```csharp
 private static ConcurrentBag<string> _staticStrings = new ConcurrentBag<string>();
